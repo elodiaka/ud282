@@ -69,7 +69,7 @@ public class Game {
      * @return boolean: true if play was successful, false if invalid play
      */
     public boolean playAt(int i, int j){
-        //check for index boundries
+        //check for index boundaries
         if(i>=3||j>=3||i<0||j<0)
             return false;
         //check if this position is available
@@ -93,7 +93,7 @@ public class Game {
     }
 
     /**
-     * Performs the winner chack and displayes a message if game is over
+     * Performs the winner check and displays a message if game is over
      * @return true if game is over to start a new game
      */
     public boolean doChecks() {
@@ -151,6 +151,40 @@ public class Game {
     public String checkGameWinner(char [][]grid){
         String result = "None";
         //Student code goes here ...
+
+        // col checks +++++++++++++++++++++++++
+        // check col 0
+        if (grid[0][0] == grid[0][1] && grid[0][1] == grid[0][2] && grid[0][0] != '-') result = grid[0][0] + " wins";
+
+        // check col 1
+        else if(grid[1][0] == grid[1][1] && grid[1][1] == grid[1][2] && grid[1][0] != '-') result = grid[1][0] + " wins";
+
+        // check col 2
+        else if(grid[2][0] == grid[2][1] && grid[2][1] == grid[2][2] && grid[2][0] != '-') result = grid[2][0] + " wins";
+
+        // row checks +++++++++++++++++++++++++
+        // check row 0
+        else if(grid[0][0] == grid[1][0] && grid[1][0] == grid[2][0] && grid[0][0] != '-') result = grid[0][0] + " wins";
+
+        // check row 1
+        else if(grid[0][1] == grid[1][1] && grid[1][1] == grid[2][1] && grid[0][1] != '-') result = grid[0][1] + " wins";
+
+        // check row 2
+        else if(grid[0][2] == grid[1][2] && grid[1][2] == grid[2][2] && grid[0][2] != '-') result = grid[0][2] + " wins";
+
+        // dia checks +++++++++++++++++++++++++
+        // check dia down
+        else if(grid[0][0] == grid[1][1] && grid[1][1] == grid[2][2] && grid[0][0] != '-') result = grid[0][0] + " wins";
+
+        // check dia up
+        else if(grid[0][2] == grid[1][1] && grid[1][1] == grid[2][0] && grid[0][2] != '-') result = grid[0][2] + " wins";
+
+        // check tie +++++++++++++++++++++++++
+        else {
+            if (result == "None" && freeSpots == 0 ) result = "Tie";
+        }
+
+        //Student code ends here ...
         return result;
     }
 
